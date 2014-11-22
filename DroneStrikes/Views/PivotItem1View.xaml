@@ -1,0 +1,59 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="DroneStrikes.Views.PivotItem1View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:Micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0, -44, 0, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="86"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <telerikPrimitives:RadTextBox Grid.Row="0" 
+                                                Watermark="search strikes by country or town" 
+                                                Width="454" 
+                                                Background="#395259" 
+                                                Foreground="#0e222b" 
+                                                BorderBrush="#395259" SelectionForeground="#FFDDEAEE" 
+                                                SelectionBackground="#FF395259" 
+                                                Height="82"
+                                                Micro:Message.Attach="[Event KeyDown] = [Action StrikeSearchKeyDown($eventArgs)]"
+                                                x:Name="ArtistSearchTerm">
+        </telerikPrimitives:RadTextBox>
+        <telerikPrimitives:RadDataBoundListBox x:Name="MenuOptions" Grid.Row="1" ItemsSource="{Binding MenuItems}" Margin="{StaticResource PhoneHorizontalMargin}" IsCheckModeEnabled="False" EmptyContent=""  SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}" telerik:InteractionEffectManager.IsInteractionEnabled="True">
+            <telerikPrimitives:RadDataBoundListBox.ItemAddedAnimation>
+                <telerik:RadMoveAnimation StartPoint="500, 0" EndPoint="0, 0" Duration="0:0:1">
+                    <telerik:RadMoveAnimation.Easing>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </telerik:RadMoveAnimation.Easing>
+                </telerik:RadMoveAnimation>
+            </telerikPrimitives:RadDataBoundListBox.ItemAddedAnimation>
+            <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0, 8, 0, 8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Icon}" Stretch="None" Width="48" Height="48" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Column="1" Text="{Binding Title}" FontSize="{StaticResource PhoneFontSizeLarge}" Foreground="{StaticResource PhoneForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </Grid>
+                </DataTemplate>
+            </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+        </telerikPrimitives:RadDataBoundListBox>
+    </Grid>
+
+</phone:PhoneApplicationPage>
