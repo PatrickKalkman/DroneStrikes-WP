@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/gsicecut6hjcxi37/branch/master?svg=true)](https://ci.appveyor.com/project/kalkie/dronestrikes-wp)
+
 ![Drone Strikes](http://cdn.marketplaceimages.windowsphone.com/v8/images/88f217c6-9c47-42fb-8bf2-a917e8597e7e?imageType=ws_icon_large)
 
 DroneStrikes-WP
