@@ -117,9 +117,13 @@ namespace DroneStrikes.ViewModels
 
         private static GeoCoordinate CreateGeoCoordinate(Strike strike)
         {
-            double latitude = Convert.ToDouble(strike.lat, System.Globalization.CultureInfo.InvariantCulture);
-            double longitude = Convert.ToDouble(strike.lon, System.Globalization.CultureInfo.InvariantCulture);
-            return new GeoCoordinate(latitude, longitude);
+            if (!string.IsNullOrEmpty(strike.lat) && !string.IsNullOrEmpty(strike.lon))
+            {
+                double latitude = Convert.ToDouble(strike.lat, System.Globalization.CultureInfo.InvariantCulture);
+                double longitude = Convert.ToDouble(strike.lon, System.Globalization.CultureInfo.InvariantCulture);
+                return new GeoCoordinate(latitude, longitude);
+            }
+            return new GeoCoordinate();
         }
 
         public void Handle(StartPinGroupingMessage message)
